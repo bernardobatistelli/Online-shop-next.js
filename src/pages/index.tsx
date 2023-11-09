@@ -43,7 +43,13 @@ export default function Home({ products }: HomeProps) {
               prefetch={false}
             >
               <Product className="keen-slider__slide">
-                <Image src={product.imageUrl} width={520} height={480} alt="" />
+                <Image
+                  src={product.imageUrl}
+                  width={520}
+                  height={480}
+                  alt=""
+                  priority={true}
+                />
 
                 <footer>
                   <strong>{product.name}</strong>
@@ -82,6 +88,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       products,
     },
-    revalidate: 60,
+    revalidate: 60 * 60 * 1, // 1 hour
   }
 }
